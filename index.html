@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Honor Board</title>
+</head>
+<body>
+    <h1>Project Honor Board</h1>
+    <ul id="honor-board"></ul>
+
+    <script>
+        const owner = 'your-username';
+        const repo = 'your-repo-name';
+
+        fetch(`https://api.github.com/repos/${mohamedreda22}/${ODC-AMIT}/contributors`)
+            .then(response => response.json())
+            .then(contributors => {
+                const honorBoard = document.getElementById('honor-board');
+                contributors.forEach(contributor => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${contributor.login} - ${contributor.contributions} contributions`;
+                    honorBoard.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching contributors:', error));
+    </script>
+</body>
+</html>
